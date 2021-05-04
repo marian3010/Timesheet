@@ -7,6 +7,7 @@ console.log(proyectosDecodificado);
 //Función que reasigna los Id y pone en 0 las horas totales
 function reasignarId() {
     //recorro el array de proyectos
+    console.log("entro a reasignar Id");
     proyId = 0;
     for (let proy of proyectosDecodificado) {
         proy.id = proyId;
@@ -87,7 +88,7 @@ function procesoForm(e) {
     localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
 }
 
-//reasignarId();
+reasignarId();
 mostrarProyectos();
 
 $("#altaProyecto").submit(procesoForm);
