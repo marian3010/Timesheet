@@ -21,7 +21,7 @@ function mostrarProyectos() {
     console.log("muestro proyectos");
     console.log(proyectosDecodificado);
     //recorro el array de proyectos
-    for (let proy of proyectosDecodificado) {
+    for (let proy of proyectos) {
         agregarLinea(proy);
     }
 }
