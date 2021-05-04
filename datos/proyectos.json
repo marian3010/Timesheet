@@ -1,24 +1,24 @@
 [
       {
-        "proyId": 0,
+        "id": 0,
 	"nomProyecto":"Factura Electronica",
         "horasEst":250,
 	"horasTot":0
       },
       {
-        "proyId": 1,
+        "id": 1,
 	"nomProyecto":"Web",
         "horasEst":180,
 	"horasTot":0
       },      
       {
-        "proyId": 2,
+        "id": 2,
 	"nomProyecto":"ERP",
         "horasEst":800,
 	"horasTot":0
       },
       {
-	"proyId": 3,
+	"id": 3,
 	"nomProyecto":"Mercado Pago",
         "horasEst":420,
 	"horasTot":0
