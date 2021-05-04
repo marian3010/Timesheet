@@ -18,10 +18,21 @@ class Empleado {
     }
 };
 
+//Cargo proyectos del Json al presionar boton
+//Declaro la url donde tengo el archivo JSON local
+const URLJSONPROY = "./datos/proyectos.json";
+
+$.getJSON(URLJSONPROY, function(respuesta, estado) {
+    if (estado === "success") {
+        proyectos = respuesta;
+        localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
+    }
+});
+
 //Cargo empleados del Json al presionar boton
 //Declaro la url donde tengo el archivo JSON local
-const URLJSON = "./datos/empleados.json"
-    //Agrego botón con jQuery
+const URLJSON = "./datos/empleados.json";
+//Agrego botón con jQuery
 $("#empleados").append('<button id="btnJ" class="boton-cargar">Cargar</button>');
 //Escucho el evento click del botón json
 $("#btnJ").click(() => {
@@ -37,13 +48,3 @@ $("#btnJ").click(() => {
         }
     })
 });
-
-//Cargo proyectos del Json al presionar boton
-//Declaro la url donde tengo el archivo JSON local
-const URLJSONPROY = "./datos/proyectos.json"
-$.getJSON(URLJSONPROY, function(respuesta, estado) {
-    if (estado === "success") {
-        proyectos = respuesta;
-        localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
-    }
-})
