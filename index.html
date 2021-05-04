@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timesheet</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="css/estilos.css" rel="stylesheet">
+    <script src="js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html"><img src="imagenes/logo-mexane.png" alt="Logo Mexané"></a>
+            <a href="index.html">Inicio</a>
+            <a href="#Proyectos">Proyectos</a>
+            <a href="#Horas">Horas</a>
+            <a href="#Resultados">Resultados</a>
+        </nav>
+    </header>
+    <main>
+        <section class="titulo1">
+            <h1>Proyecto Timesheet</h1>
+            <p>Para realizar la sumulación de horas deberá seguir los siguientes pasos:</p>
+            <ol>
+                <li> cargar la nómina de desarrolladores.</li>
+                <li> cargar los proyectos para los cuales se quiere realizar la simulación.</li>
+                <li> cargar las horas por desarrollador y proyecto.</li>
+                <li> actualizar y controlar los resultados.</li>
+            </ol>
+        </section>
+        <section class="titulos">
+            <h2>1. Nómina de desarrolladores</h2>
+            <div id="empleados" class="nomina">
+                <p>Presione el botón para cargar los empleados</p>
+            </div>
+            <div id="listaEmpleados" class="nomina"></div>
+        </section>
+        <section id="Proyectos" class="titulos">
+            <h2>2. Carga de Proyectos</h2>
+            <div class="formulario">
+                <form id="altaProyecto" class="formCarga">
+                    <label for proyecto>Nombre Proyecto:</label>
+                    <input type="text" name="proyecto" required id="proyectoNuevo">
+                    <label for cantHoras>Horas presupuestadas:  </label>
+                    <input type=number name="cantHoras" id="cantHorasEst" value=0>
+                    <button type="submit" class="botones" value="Confirmar">Confirmar</button>
+                </form>
+            </div>
+            <div class="alta-proyectos">
+                <div id="tabProyectos">
+                    <div id="primeraFila" class="fila">
+                        <div class="columna3 proyectos-item"><b>Proyecto</b></div>
+                        <div class="columna3 proyectos-item"><b>Horas presupuestadas</b></div>
+                        <div class="columna3 proyectos-item"><b>Eliminar</b></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Horas" class="titulos">
+            <h2>3. Simulación de horas de proyectos</h2>
+            <div id="formulario">
+                <div class="formulario">
+                    <form id="form-carga" class="formCarga">
+                        <label for nombre>Desarrollador: </label>
+                        <input type="text" name="nombre" required id="nombreEmp">
+                        <label for proyecto>Proyecto:</label>
+                        <input type="text" name="proyecto" required id="proyectoEmp">
+                        <label for cantHoras>Horas:  </label>
+                        <input type=number name="cantHoras" id="cantHorasEmp" value=0>
+                        <button type="submit" class="botones" value="Confirmar">Ingresar datos</button><br><br>
+                        <label for resultados>Presioná para <strong>actualizar</strong> los resultados</label>
+                        <button type="button" class="botones" name="resultados" value="resultados" id="muestroResultados">Resultados</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section id="Resultados" class="titulos">
+            <h2>4. Resultados de la simulación</h2>
+            <div id="resultados">
+                <h3>Resultados por Proyecto</h3>
+                <div id="proyecto" class="proyectos">
+
+                </div>
+                <h3>Resultados por Empleado</h3>
+                <div id="empleado" class="empleados">
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="estilo-footer">
+            <div class="footer-item">
+                <i class="far fa-copyright color-blanco"></i><strong class="color-blanco">Copyright Mexané 2021</strong>
+            </div>
+            <div class="footer-item">
+                <i class="fas fa-phone color-blanco"></i><strong class="color-blanco">+5411 5031 3070</strong>
+            </div>
+            <div class="footer-item">
+                <i class="far fa-envelope color-blanco"></i><strong class="color-blanco">info@mexane.com</strong>
+            </div>
+        </div>
+    </footer>
+    <script src="js/datos.js"></script>
+    <script src="js/proyectos.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

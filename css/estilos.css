@@ -1,0 +1,213 @@
+:root {
+    font-size: 16px;
+}
+
+h1 {
+    margin-left: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5rem;
+}
+
+h2 {
+    margin-left: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 550;
+}
+
+h3 {
+    margin-left: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    font-weight: 550;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 1rem;
+}
+
+header nav a:hover {
+    color: slategrey;
+    text-decoration: underline;
+}
+
+nav {
+    display: inline-block;
+    height: 70px;
+    margin-bottom: 1.5rem;
+}
+
+nav a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    color: red;
+    text-decoration: none;
+    margin-left: 1rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+    height: 70px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+div {
+    padding-bottom: 0.5rem;
+}
+
+li {
+    color: rgb(33, 67, 102);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+}
+
+#formulario {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.titulo1 {
+    margin-left: 1rem;
+}
+
+.titulos {
+    margin-left: 1rem;
+    margin-top: 3rem;
+}
+
+.estilo-footer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: rgb(174, 173, 180);
+    background-image: linear-gradient(#919daa, #b2bfcc);
+    height: 50px;
+    padding: 10px;
+}
+
+.footer-item {
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+}
+
+.color-blanco {
+    color: white;
+}
+
+.nomina {
+    padding-top: 0.5rem;
+    background-color: rgb(183, 191, 202);
+}
+
+.boton-cargar {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: lightgray;
+    border-color: grey;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.desarrolladores {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    color: rgb(33, 67, 102);
+    margin-left: 1rem;
+}
+
+.proyectos {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    background-color: #4d4d40;
+    padding: 10px;
+}
+
+.proyectos-item {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+}
+
+.proyectos-item-rojo {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: rgb(240, 80, 80);
+}
+
+.alta-proyectos {
+    background-color: #4d4d40;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.fila {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.columna3 {
+    position: relative;
+    width: 100%;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.boton-eliminar {
+    background-color: lightgray;
+    border-color: grey;
+    height: 20px;
+}
+
+.empleados {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: #4d4d40;
+    padding: 10px;
+}
+
+.empleados-item {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+}
+
+.formulario {
+    align-content: center;
+    padding: 10px;
+    background-color: rgb(240, 80, 80);
+    border-radius: 10px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.botones {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: lightgray;
+    border-color: grey;
+}
+
+.formCarga {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    border-color: red;
+}
