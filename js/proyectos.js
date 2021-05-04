@@ -62,6 +62,7 @@ function agregarLinea(proy) {
 }
 
 function procesoForm(e) {
+    console.log("entro al evento agregar proyecto");
     e.preventDefault();
     let formulario = e.target;
     let nomProyecto = formulario.children[1].value;
