@@ -18,6 +18,7 @@ function reasignarId() {
 
 //Función que agrega los proyectos al grid
 function mostrarProyectos() {
+    proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
     console.log("muestro proyectos");
     console.log(proyectosDecodificado);
     //recorro el array de proyectos
