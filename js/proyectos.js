@@ -84,9 +84,7 @@ function procesoForm(e) {
     localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
 }
 
-if (proyectosDecodificado != '') {
-    reasignarId();
-    mostrarProyectos();
-}
+//reasignarId();
+//mostrarProyectos();
 
 $("#altaProyecto").submit(procesoForm);
