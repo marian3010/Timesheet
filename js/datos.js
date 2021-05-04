@@ -34,7 +34,7 @@ $.getJSON(URLJSONPROY, function(respuesta, estado) {
     }
 });
 console.log(proyectos);
-
+localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
 
 //Cargo empleados del Json al presionar boton
 //Declaro la url donde tengo el archivo JSON local
