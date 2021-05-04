@@ -21,17 +21,19 @@ console.log("en datos.js, antes de cargar proyectos");
 //Cargo proyectos del Json al presionar boton
 //Declaro la url donde tengo el archivo JSON local
 const URLJSONPROY = "./datos/proyectos.json";
-console.log(URLJSONPROY);
 
 $.getJSON(URLJSONPROY, function(respuesta, estado) {
     console.log("entre a cargar el json proyectos");
     if (estado === "success") {
-        proyectos = respuesta;
+        respuesta.map(p => proyectos.push(p));
         localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
         console.log("cargo el json de proyectos");
+    } else {
+        console.log('Error al cargar proyectos.')
     }
 });
 console.log(proyectos);
+
 
 //Cargo empleados del Json al presionar boton
 //Declaro la url donde tengo el archivo JSON local
