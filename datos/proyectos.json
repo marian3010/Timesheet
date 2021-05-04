@@ -1,0 +1,27 @@
+[
+      {
+        "proyId": 0,
+	"nomProyecto":"Factura Electronica",
+        "horasEst":0,
+	"horasTot":0
+      },
+      {
+        "proyId": 1,
+	"nomProyecto":"Web",
+        "horasEst":0,
+	"horasTot":0
+      },      
+      {
+        "proyId": 2,
+	"nomProyecto":"ERP",
+        "horasEst":0,
+	"horasTot":0
+      },
+      {
+	"proyId": 3,
+	"nomProyecto":"Mercado Pago",
+        "horasEst":0,
+	"horasTot":0
+      }
+]
+

@@ -37,3 +37,13 @@ $("#btnJ").click(() => {
         }
     })
 });
+
+//Cargo proyectos del Json al presionar boton
+//Declaro la url donde tengo el archivo JSON local
+const URLJSONPROY = "./datos/proyectos.json"
+$.getJSON(URLJSONPROY, function(respuesta, estado) {
+    if (estado === "success") {
+        proyectos = respuesta;
+        localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
+    }
+})
