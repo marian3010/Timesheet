@@ -26,8 +26,10 @@ $.getJSON(URLJSONPROY, function(respuesta, estado) {
     if (estado === "success") {
         proyectos = respuesta;
         localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
+        console.log("cargo el json de proyectos");
     }
 });
+console.log(proyectos);
 
 //Cargo empleados del Json al presionar boton
 //Declaro la url donde tengo el archivo JSON local
