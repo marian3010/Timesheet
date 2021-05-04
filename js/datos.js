@@ -17,12 +17,14 @@ class Empleado {
         this.horas = hsProyectos;
     }
 };
-
+console.log("en datos.js, antes de cargar proyectos");
 //Cargo proyectos del Json al presionar boton
 //Declaro la url donde tengo el archivo JSON local
 const URLJSONPROY = "./datos/proyectos.json";
+console.log(URLJSONPROY);
 
 $.getJSON(URLJSONPROY, function(respuesta, estado) {
+    console.log("entre a cargar el json proyectos");
     if (estado === "success") {
         proyectos = respuesta;
         localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
