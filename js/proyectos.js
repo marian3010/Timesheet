@@ -3,7 +3,7 @@ var proyId = 0;
 var proyectosDecodificado = [];
 
 proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
-
+console.log(proyectosDecodificado);
 //Función que reasigna los Id y pone en 0 las horas totales
 function reasignarId() {
     //recorro el array de proyectos
@@ -17,6 +17,8 @@ function reasignarId() {
 
 //Función que agrega los proyectos al grid
 function mostrarProyectos() {
+    console.log("muestro proyectos");
+    console.log(proyectosDecodificado);
     //recorro el array de proyectos
     for (let proy of proyectosDecodificado) {
         agregarLinea(proy);
@@ -85,7 +87,7 @@ function procesoForm(e) {
     localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
 }
 
-reasignarId();
+//reasignarId();
 mostrarProyectos();
 
 $("#altaProyecto").submit(procesoForm);
