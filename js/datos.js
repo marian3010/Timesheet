@@ -26,7 +26,6 @@ $.getJSON(URLJSONPROY, function(respuesta, estado) {
     console.log("entre a cargar el json proyectos");
     if (estado === "success") {
         respuesta.map(p => proyectos.push(p));
-        reasignarId();
         mostrarProyectos();
         localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
         console.log("cargo el json de proyectos");
