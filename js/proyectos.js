@@ -28,6 +28,8 @@ function mostrarProyectos() {
 
 function agregarLinea(proy) {
     //agrego el proyecto al HTML
+    console.log("entro a agregar linea");
+    console.log(proy);
     $("#tabProyectos").append(
         `
           <div id="row${proy.id}" style="display: none" class="fila">
@@ -83,6 +85,7 @@ function procesoForm(e) {
         horasTot,
     };
     proyectosDecodificado.push(nuevoProyecto);
+    console.log(nuevoProyecto);
     agregarLinea(nuevoProyecto);
     proyId++;
     localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
