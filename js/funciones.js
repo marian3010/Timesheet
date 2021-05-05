@@ -1,11 +1,148 @@
 //Inicializo variables
-let primeraVezEmp = true;
-let primeraVezProy = true;
+
 let empleadosDecodificado = [];
 
-//Defino funciones
-//Proceso los valores ingresados en el formulario al hacer click en Confirmar
+//Cargo proyectos del Json al presionar boton
+//Declaro la url donde tengo el archivo JSON local
+const URLJSONPROY = "./datos/proyectos.json";
 
+$.getJSON(URLJSONPROY, function(respuesta, estado) {
+    console.log("entre a cargar el json proyectos");
+    if (estado === "success") {
+        respuesta.map(p => proyectos.push(p));
+        localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
+        mostrarProyectos();
+        console.log("se cargó el json de proyectos");
+    } else {
+        console.log('Error al cargar proyectos')
+    }
+});
+
+//Cargo empleados del Json al presionar boton
+//Declaro la url donde tengo el archivo JSON local
+const URLJSON = "./datos/empleados.json";
+//Agrego botón con jQuery
+$("#empleados").append('<button id="btnJ" class="boton-cargar">Cargar</button>');
+//Escucho el evento click del botón json
+$("#btnJ").click(() => {
+    $.getJSON(URLJSON, function(respuesta, estado) {
+        if (estado === "success") {
+            empleados = respuesta;
+            $("#listaEmpleados").html("");
+            $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores"><strong>Desarrolladores</strong>`);
+            for (let des of empleados) {
+                $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores">${des.nombre}`);
+            }
+            localStorage.setItem('tablaEmpleados', JSON.stringify(empleados));
+        }
+    })
+});
+
+
+var proyId = 0;
+var proyectosDecodificado = [];
+
+proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
+
+//Función que reasigna los Id y pone en 0 las horas totales de proyecto y de empleados
+function reasignarId() {
+    //recorro el array de proyectos
+    console.log("entro a reasignar Id");
+    proyId = 0;
+    for (let proy of proyectosDecodificado) {
+        proy.id = proyId;
+        proy.horasTot = 0;
+        proyId++;
+    }
+    //for (let emp of empleadosDecodificado) {
+    //  emp.horasTot = 0;
+
+    //}
+}
+
+//Función que agrega los proyectos al grid
+function mostrarProyectos() {
+    proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
+    console.log("muestro proyectos");
+    //recorro el array de proyectos
+    for (let proy of proyectosDecodificado) {
+        agregarLinea(proy);
+    }
+}
+
+function agregarLinea(proy) {
+    //agrego el proyecto al HTML
+    console.log("entro a agregar linea");
+    $("#tabProyectos").append(
+        `
+          <div id="row${proy.id}" style="display: none" class="fila">
+              <div class="columna3 proyectos-item">
+                ${proy.nomProyecto}
+              </div>
+              <div class="columna3 proyectos-item">
+                ${proy.horasEst}
+              </div>
+              <div class="columna3 proyectos-item">
+              <button id="btn-${proy.id}" class="boton-eliminar">Eliminar</button>
+              </div>
+          </div>
+        `
+    );
+    // asigno handler para el boton eliminar
+    $(`#btn-${proy.id}`).click((e) => {
+        // borro del array y actualizo local storage para la carga de horas
+        console.log("entro al evento del boton eliminar");
+        var index = proyectosDecodificado.findIndex(proy => proy.id == ($(e.target).attr('id')).split('-')[1]);
+        //proyectosDecodificado.splice(index, 1);
+        proyectosDecodificado = proyectosDecodificado.filter(proy => proy.id != index);
+        console.log(proyectosDecodificado);
+        reasignarId();
+        // borro la fila del html
+        const nodoFila = $(e.target).parent().parent();
+        // animaciones al borrar
+        nodoFila.animate({ "opacity": "0.5", }, 1000)
+            .fadeOut(1000, () => {
+                nodoFila.remove();
+            });
+        alert("Si ya procesó una simulación, actualice los resultados presionando el botón Resultados de la siguiente sección.");
+        localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
+    });
+    console.log("se agregara fila de proyecto");
+    console.log(proy.id);
+    console.log(proyectosDecodificado);
+    $(`#row${proy.id}`).fadeIn(2000, () => { console.log('Agrego fila') });
+
+}
+
+function procesoForm(e) {
+    console.log("entro al evento agregar proyecto");
+    e.preventDefault();
+    let formulario = e.target;
+    let nomProyecto = formulario.children[1].value;
+    let horasEst = Number(formulario.children[3].value);
+    let horasTot = 0;
+    let indProyecto = proyectosDecodificado.findIndex(c => c.nomProyecto == nomProyecto);
+    if (indProyecto >= 0) {
+        alert("El proyecto ya existe!");
+        return;
+    }
+    let canti = proyectosDecodificado.length;
+    console.log(canti);
+    const nuevoProyecto = {
+        id: canti,
+        nomProyecto,
+        horasEst,
+        horasTot,
+    };
+    proyectosDecodificado.push(nuevoProyecto);
+    localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
+    agregarLinea(nuevoProyecto);
+
+}
+
+
+//Defino funciones
+//Proceso los valores ingresados en el formulario de carga de horas al hacer click en Confirmar
 function procesarFormulario(e) {
     empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
     proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
@@ -51,40 +188,32 @@ function handlerBoton() {
     proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
     actualizoValoresProyecto();
     actualizoValoresEmpleado();
-
 }
 
-// Agrego nodos hijos al nodo Proyectos
+// Agrego nodos hijos al nodo Resultado Proyectos
 function actualizoValoresProyecto() {
     borroValoresProyecto();
     //Agrego los títulos al div
     $("#proyecto").append(`<div id="proyecto" class="proyectos-item"><strong>Proyecto</strong>`);
-
     $("#proyecto").append(`<div id="proyecto" class="proyectos-item"><strong>Horas presupuestadas</strong>`);
-
     $("#proyecto").append(`<div id="proyecto" class="proyectos-item"><strong>Horas utilizadas</strong>`);
-
     $("#proyecto").append(`<div id="proyecto" class="proyectos-item"><strong>% horas utilizadas</strong>`);
-
     $("#proyecto").append(`<div id="proyecto" class="proyectos-item"><strong>Horas restantes</strong>`);
 
     for (let proy of proyectosDecodificado) {
         agregarProyecto(proy);
-        primeraVezProy = false;
+
     }
 }
 
 function borroValoresProyecto() {
-    //if (primeraVezProy != true) {
     $("#proyecto").html("");
-    //}
 }
+
 //Agrego los resultados de proyectos al grid
 function agregarProyecto(proyecto) {
     // Agrego los valores al div
-
     let porcentaje = proyecto.horasTot / proyecto.horasEst * 100;
-
     if (porcentaje > 100) {
         $("#proyecto").append(`<div id="proyecto" class="proyectos-item-rojo">${proyecto.nomProyecto}`);
         $("#proyecto").append(`<div id="proyecto" class="proyectos-item-rojo">${proyecto.horasEst}`);
@@ -102,24 +231,20 @@ function agregarProyecto(proyecto) {
 
 function borroValoresEmpleado() {
     $("#empleado").html("");
-
 }
 
 //Armo la lista de empleados y su total de horas
 function actualizoValoresEmpleado() {
     borroValoresEmpleado();
+
     //Agrego los títulos al div
-
     $("#empleado").append(`<div id="empleado" class="empleados-item"><strong>Nombre empleado</strong>`);
-
     $("#empleado").append(`<div id="empleado" class="empleados-item"><strong>Horas cargadas</strong>`);
 
     //recorro array empleados y armo la grilla
     for (const empleadoItem of empleadosDecodificado) {
         $("#empleado").append(`<div id="empleado" class="empleados-item">${empleadoItem.nombre}`);
-
         $("#empleado").append(`<div id="empleado" class="empleados-item"> ${empleadoItem.horas}`);
 
-        primeraVezEmp = false;
     }
 }
