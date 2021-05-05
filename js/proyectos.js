@@ -56,7 +56,6 @@ function agregarLinea(proy) {
         console.log("entro al evento del boton eliminar");
         var index = proyectosDecodificado.findIndex(proy => proy.id == ($(e.target).attr('id')).split('-')[1]);
         //proyectosDecodificado.splice(index, 1);
-        console.log(index);
         proyectosDecodificado = proyectosDecodificado.filter(proy => proy.id != index);
         console.log(proyectosDecodificado);
         reasignarId();
