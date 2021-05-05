@@ -105,5 +105,5 @@ function procesoForm(e) {
 $("#altaProyecto").submit(procesoForm);
 
 $('#subir').click(()  =>  {    
-    $('html, body').animate({         scrollTop:  $("body").offset().top     },  2000);
+    $('html, body').animate({ scrollTop:  $("body").offset().top }, 5000);
 });
