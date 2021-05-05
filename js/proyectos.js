@@ -55,7 +55,8 @@ function agregarLinea(proy) {
         // borro del array y actualizo local storage para la carga de horas
         console.log("entro al evento del boton eliminar");
         var index = proyectosDecodificado.findIndex(proy => proy.id == ($(e.target).attr('id')).split('-')[1]);
-        proyectosDecodificado.splice(index, 1);
+        //proyectosDecodificado.splice(index, 1);
+        proyectosDecodificado = proyectosDecodificado.filter(proy => proy.id != index);
         console.log(proyectosDecodificado);
         reasignarId();
         // borro la fila del html
