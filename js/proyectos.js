@@ -70,6 +70,7 @@ function agregarLinea(proy) {
     });
     console.log("se agregara fila de proyecto");
     console.log(proy.id);
+    console.log(proyectosDecodificado);
     $(`#row${proy.id}`).fadeIn(2000, () => { console.log('Agrego fila') });
     //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
 }
@@ -95,9 +96,10 @@ function procesoForm(e) {
         horasTot,
     };
     proyectosDecodificado.push(nuevoProyecto);
+    localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
     agregarLinea(nuevoProyecto);
     //proyId++;
-    localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
+
 }
 
 //reasignarId();
