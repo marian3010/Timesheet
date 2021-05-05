@@ -1,18 +1,11 @@
-//Inicializo variables
-
-//let empleadosDecodificado = [];
-
 //Cargo proyectos del Json al presionar boton
 //Declaro la url donde tengo el archivo JSON local
 const URLJSONPROY = "./datos/proyectos.json";
 
 $.getJSON(URLJSONPROY, function(respuesta, estado) {
-    console.log("entre a cargar el json proyectos");
     if (estado === "success") {
         respuesta.map(p => proyectos.push(p));
-        //localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
         mostrarProyectos();
-        console.log("se cargó el json de proyectos");
     } else {
         console.log('Error al cargar proyectos')
     }
@@ -33,22 +26,14 @@ $("#btnJ").click(() => {
             for (let des of empleados) {
                 $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores">${des.nombre}`);
             }
-            //localStorage.setItem('tablaEmpleados', JSON.stringify(empleados));
         }
     })
 });
 
-
-var proyId = 0;
-//var proyectosDecodificado = [];
-
-//proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
-
 //Función que reasigna los Id y pone en 0 las horas totales de proyecto y de empleados
 function reasignarId() {
     //recorro el array de proyectos
-    console.log("entro a reasignar Id");
-    proyId = 0;
+    let proyId = 0;
     for (let proy of proyectos) {
         proy.id = proyId;
         proy.horasTot = 0;
@@ -62,8 +47,6 @@ function reasignarId() {
 
 //Función que agrega los proyectos al grid
 function mostrarProyectos() {
-    //proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
-    console.log("muestro proyectos");
     //recorro el array de proyectos
     for (let proy of proyectos) {
         agregarLinea(proy);
@@ -72,7 +55,6 @@ function mostrarProyectos() {
 
 function agregarLinea(proy) {
     //agrego el proyecto al HTML
-    console.log("entro a agregar linea");
     $("#tabProyectos").append(
         `
           <div id="row${proy.id}" style="display: none" class="fila">
@@ -93,7 +75,6 @@ function agregarLinea(proy) {
         // borro del array y actualizo local storage para la carga de horas
         console.log("entro al evento del boton eliminar");
         var index = proyectos.findIndex(proy => proy.id == ($(e.target).attr('id')).split('-')[1]);
-        //proyectosDecodificado.splice(index, 1);
         proyectos = proyectos.filter(proy => proy.id != index);
         reasignarId();
         // borro la fila del html
@@ -104,17 +85,12 @@ function agregarLinea(proy) {
                 nodoFila.remove();
             });
         alert("Si ya procesó una simulación, actualice los resultados presionando el botón Resultados de la siguiente sección.");
-        //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
     });
-    console.log("se agregara fila de proyecto");
-    console.log(proy.id);
-    console.log(proyectos);
     $(`#row${proy.id}`).fadeIn(2000, () => { console.log('Agrego fila') });
 
 }
 
 function procesoForm(e) {
-    console.log("entro al evento agregar proyecto");
     e.preventDefault();
     let formulario = e.target;
     let nomProyecto = formulario.children[1].value;
@@ -137,12 +113,9 @@ function procesoForm(e) {
 
 }
 
-
 //Defino funciones
 //Proceso los valores ingresados en el formulario de carga de horas al hacer click en Confirmar
 function procesarFormulario(e) {
-
-    console.log("entro al evento submit");
     e.preventDefault();
     error = false;
     let formulario = e.target;
@@ -164,19 +137,16 @@ function procesarFormulario(e) {
         alert("El nombre de proyecto ingresado no es válido. Intentá nuevamente.");
         error = true;
     }
-
     //Totalizo horas por proyecto y por empleado
     if (error == false) {
         empleados[indexEmpleado].horas = empleados[indexEmpleado].horas + horas;
         proyectos[indexProyecto].horasTot = Number(proyectos[indexProyecto].horasTot) + horas;
     }
-    console.log("sume horas al proyecto - boton confirmar");
+
 }
 
 //Llamo a las funciones de actualizacion de resultados al hacer click en Mostrar Resultados
 function handlerBoton() {
-    console.log("entro al evento mostrar");
-
     actualizoValoresProyecto();
     actualizoValoresEmpleado();
 }
