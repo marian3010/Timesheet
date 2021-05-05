@@ -14,6 +14,8 @@ function reasignarId() {
         proy.horasTot = 0;
         proyId++;
     }
+    console.log(proyId);
+    console.log(proyectosDecodificado);
     //for (let emp of empleadosDecodificado) {
     //  emp.horasTot = 0;
 
@@ -54,6 +56,7 @@ function agregarLinea(proy) {
         console.log("entro al evento del boton eliminar");
         var index = proyectosDecodificado.findIndex(proy => proy.id == ($(e.target).attr('id')).split('-')[1]);
         proyectosDecodificado.splice(index, 1);
+        console.log(proyectosDecodificado);
         reasignarId();
         // borro la fila del html
         const nodoFila = $(e.target).parent().parent();
