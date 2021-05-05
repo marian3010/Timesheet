@@ -1,6 +1,6 @@
 //Inicializo variables
 
-let empleadosDecodificado = [];
+//let empleadosDecodificado = [];
 
 //Cargo proyectos del Json al presionar boton
 //Declaro la url donde tengo el archivo JSON local
@@ -10,7 +10,7 @@ $.getJSON(URLJSONPROY, function(respuesta, estado) {
     console.log("entre a cargar el json proyectos");
     if (estado === "success") {
         respuesta.map(p => proyectos.push(p));
-        localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
+        //localStorage.setItem('tablaProyectos', JSON.stringify(proyectos));
         mostrarProyectos();
         console.log("se cargó el json de proyectos");
     } else {
@@ -33,23 +33,23 @@ $("#btnJ").click(() => {
             for (let des of empleados) {
                 $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores">${des.nombre}`);
             }
-            localStorage.setItem('tablaEmpleados', JSON.stringify(empleados));
+            //localStorage.setItem('tablaEmpleados', JSON.stringify(empleados));
         }
     })
 });
 
 
 var proyId = 0;
-var proyectosDecodificado = [];
+//var proyectosDecodificado = [];
 
-proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
+//proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
 
 //Función que reasigna los Id y pone en 0 las horas totales de proyecto y de empleados
 function reasignarId() {
     //recorro el array de proyectos
     console.log("entro a reasignar Id");
     proyId = 0;
-    for (let proy of proyectosDecodificado) {
+    for (let proy of proyectos) {
         proy.id = proyId;
         proy.horasTot = 0;
         proyId++;
@@ -62,10 +62,10 @@ function reasignarId() {
 
 //Función que agrega los proyectos al grid
 function mostrarProyectos() {
-    proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
+    //proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
     console.log("muestro proyectos");
     //recorro el array de proyectos
-    for (let proy of proyectosDecodificado) {
+    for (let proy of proyectos) {
         agregarLinea(proy);
     }
 }
@@ -92,10 +92,10 @@ function agregarLinea(proy) {
     $(`#btn-${proy.id}`).click((e) => {
         // borro del array y actualizo local storage para la carga de horas
         console.log("entro al evento del boton eliminar");
-        var index = proyectosDecodificado.findIndex(proy => proy.id == ($(e.target).attr('id')).split('-')[1]);
+        var index = proyectos.findIndex(proy => proy.id == ($(e.target).attr('id')).split('-')[1]);
         //proyectosDecodificado.splice(index, 1);
-        proyectosDecodificado = proyectosDecodificado.filter(proy => proy.id != index);
-        console.log(proyectosDecodificado);
+        proyectos = proyectos.filter(proy => proy.id != index);
+        console.log(proyectos);
         reasignarId();
         // borro la fila del html
         const nodoFila = $(e.target).parent().parent();
@@ -105,11 +105,11 @@ function agregarLinea(proy) {
                 nodoFila.remove();
             });
         alert("Si ya procesó una simulación, actualice los resultados presionando el botón Resultados de la siguiente sección.");
-        localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
+        //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
     });
     console.log("se agregara fila de proyecto");
     console.log(proy.id);
-    console.log(proyectosDecodificado);
+    console.log(proyectos);
     $(`#row${proy.id}`).fadeIn(2000, () => { console.log('Agrego fila') });
 
 }
@@ -121,12 +121,12 @@ function procesoForm(e) {
     let nomProyecto = formulario.children[1].value;
     let horasEst = Number(formulario.children[3].value);
     let horasTot = 0;
-    let indProyecto = proyectosDecodificado.findIndex(c => c.nomProyecto == nomProyecto);
+    let indProyecto = proyectos.findIndex(c => c.nomProyecto == nomProyecto);
     if (indProyecto >= 0) {
         alert("El proyecto ya existe!");
         return;
     }
-    let canti = proyectosDecodificado.length;
+    let canti = proyectos.length;
     console.log(canti);
     const nuevoProyecto = {
         id: canti,
@@ -134,8 +134,8 @@ function procesoForm(e) {
         horasEst,
         horasTot,
     };
-    proyectosDecodificado.push(nuevoProyecto);
-    localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
+    proyectos.push(nuevoProyecto);
+    //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
     agregarLinea(nuevoProyecto);
 
 }
@@ -144,10 +144,10 @@ function procesoForm(e) {
 //Defino funciones
 //Proceso los valores ingresados en el formulario de carga de horas al hacer click en Confirmar
 function procesarFormulario(e) {
-    empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
-    proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
+    //empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
+    //proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
     console.log("entro al evento submit");
-    console.log(proyectosDecodificado);
+    console.log(proyectos);
     e.preventDefault();
     error = false;
     let formulario = e.target;
@@ -159,12 +159,12 @@ function procesarFormulario(e) {
         alert("La cantidad de horas no es válida. Intentá nuevamente.");
         error = true;
     }
-    let indexEmpleado = empleadosDecodificado.findIndex(c => c.nombre == nombre);
+    let indexEmpleado = empleados.findIndex(c => c.nombre == nombre);
     if (indexEmpleado < 0) {
         alert("El nombre de empleado ingresado no es válido. Intentá nuevamente.");
         error = true;
     }
-    let indexProyecto = proyectosDecodificado.findIndex(c => c.nomProyecto == proyecto);
+    let indexProyecto = proyectos.findIndex(c => c.nomProyecto == proyecto);
     if (indexProyecto < 0) {
         alert("El nombre de proyecto ingresado no es válido. Intentá nuevamente.");
         error = true;
@@ -172,10 +172,10 @@ function procesarFormulario(e) {
 
     //Totalizo horas por proyecto y por empleado
     if (error == false) {
-        empleadosDecodificado[indexEmpleado].horas = empleadosDecodificado[indexEmpleado].horas + horas;
-        proyectosDecodificado[indexProyecto].horasTot = Number(proyectosDecodificado[indexProyecto].horasTot) + horas;
-        localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
-        localStorage.setItem('tablaEmpleados', JSON.stringify(empleadosDecodificado));
+        empleados[indexEmpleado].horas = empleados[indexEmpleado].horas + horas;
+        proyectos[indexProyecto].horasTot = Number(proyectos[indexProyecto].horasTot) + horas;
+        //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
+        //localStorage.setItem('tablaEmpleados', JSON.stringify(empleadosDecodificado));
     }
     console.log("sume horas al proyecto - boton confirmar");
 }
@@ -184,8 +184,8 @@ function procesarFormulario(e) {
 //Llamo a las funciones de actualizacion de resultados al hacer click en Mostrar Resultados
 function handlerBoton() {
     console.log("entro al evento mostrar");
-    empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
-    proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
+    // empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
+    //proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
     actualizoValoresProyecto();
     actualizoValoresEmpleado();
 }
@@ -200,7 +200,7 @@ function actualizoValoresProyecto() {
     $("#proyecto").append(`<div id="proyecto" class="proyectos-item"><strong>% horas utilizadas</strong>`);
     $("#proyecto").append(`<div id="proyecto" class="proyectos-item"><strong>Horas restantes</strong>`);
 
-    for (let proy of proyectosDecodificado) {
+    for (let proy of proyectos) {
         agregarProyecto(proy);
 
     }
@@ -242,7 +242,7 @@ function actualizoValoresEmpleado() {
     $("#empleado").append(`<div id="empleado" class="empleados-item"><strong>Horas cargadas</strong>`);
 
     //recorro array empleados y armo la grilla
-    for (const empleadoItem of empleadosDecodificado) {
+    for (const empleadoItem of empleados) {
         $("#empleado").append(`<div id="empleado" class="empleados-item">${empleadoItem.nombre}`);
         $("#empleado").append(`<div id="empleado" class="empleados-item"> ${empleadoItem.horas}`);
 
