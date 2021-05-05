@@ -42,9 +42,9 @@ $("#btnJ").click(() => {
         if (estado === "success") {
             empleados = respuesta;
             $("#listaEmpleados").html("");
-            $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores"><strong>Desarrolladores</strong>`);
+            $("#listaEmpleados").append(`<div class="desarrolladores"><strong>Desarrolladores</strong>`);
             for (let des of empleados) {
-                $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores">${des.nombre}`);
+                $("#listaEmpleados").append(`<div class="desarrolladores">${des.nombre}`);
             }
         }
     })
