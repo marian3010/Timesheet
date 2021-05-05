@@ -61,7 +61,7 @@ function agregarLinea(proy) {
         reasignarId();
         // borro la fila del html
         const nodoFila = $(e.target).parent().parent();
-        // concateno animaciones al borrar
+        // animaciones al borrar
         nodoFila.animate({ "opacity": "0.5", }, 1000)
             .fadeOut(1000, () => {
                 nodoFila.remove();
@@ -73,7 +73,7 @@ function agregarLinea(proy) {
     console.log(proy.id);
     console.log(proyectosDecodificado);
     $(`#row${proy.id}`).fadeIn(2000, () => { console.log('Agrego fila') });
-    //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
+
 }
 
 function procesoForm(e) {
@@ -99,11 +99,7 @@ function procesoForm(e) {
     proyectosDecodificado.push(nuevoProyecto);
     localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
     agregarLinea(nuevoProyecto);
-    //proyId++;
 
 }
-
-//reasignarId();
-//mostrarProyectos();
 
 $("#altaProyecto").submit(procesoForm);
