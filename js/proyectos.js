@@ -3,7 +3,7 @@ var proyId = 0;
 var proyectosDecodificado = [];
 
 proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
-console.log(proyectosDecodificado);
+
 //Función que reasigna los Id y pone en 0 las horas totales
 function reasignarId() {
     //recorro el array de proyectos
@@ -20,7 +20,6 @@ function reasignarId() {
 function mostrarProyectos() {
     proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
     console.log("muestro proyectos");
-    console.log(proyectosDecodificado);
     //recorro el array de proyectos
     for (let proy of proyectosDecodificado) {
         agregarLinea(proy);
@@ -30,7 +29,6 @@ function mostrarProyectos() {
 function agregarLinea(proy) {
     //agrego el proyecto al HTML
     console.log("entro a agregar linea");
-    console.log(proy);
     $("#tabProyectos").append(
         `
           <div id="row${proy.id}" style="display: none" class="fila">
@@ -63,8 +61,9 @@ function agregarLinea(proy) {
         alert("Si ya procesó una simulación, actualice los resultados presionando el botón Resultados de la siguiente sección.");
         localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
     });
+    console.log("se agregara fila de proyecto");
     $(`#row${proy.id}`).fadeIn(2000, () => { console.log('Agrego fila') });
-    localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
+    //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
 }
 
 function procesoForm(e) {

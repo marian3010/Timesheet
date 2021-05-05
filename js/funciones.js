@@ -5,7 +5,8 @@ let empleadosDecodificado = [];
 
 empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
 proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
-
+console.log(empleadosDecodificado);
+console.log(proyectosDecodificado);
 //Defino funciones
 //Proceso los valores ingresados en el formulario al hacer click en Confirmar
 
