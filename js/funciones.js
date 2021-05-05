@@ -173,13 +173,6 @@ function procesarFormulario(e) {
     console.log("sume horas al proyecto - boton confirmar");
 }
 
-function handlerConfirmar() {
-
-    $("#form-carga").submit(procesarFormulario);
-    //$("#form-carga").reset();
-}
-
-
 //Llamo a las funciones de actualizacion de resultados al hacer click en Mostrar Resultados
 function handlerBoton() {
     console.log("entro al evento mostrar");
