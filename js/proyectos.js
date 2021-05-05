@@ -91,9 +91,8 @@ function procesoForm(e) {
         horasTot,
     };
     proyectosDecodificado.push(nuevoProyecto);
-    console.log(nuevoProyecto);
     agregarLinea(nuevoProyecto);
-    proyId++;
+    //proyId++;
     localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
 }
 
