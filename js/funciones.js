@@ -172,7 +172,7 @@ function procesarFormulario(e) {
         proyectos[indexProyecto].horasTot = Number(proyectos[indexProyecto].horasTot) + horas;
     }
     console.log("sume horas al proyecto - boton confirmar");
-    $("#form-carga").reset();
+
 }
 
 
