@@ -3,7 +3,8 @@
 $("#altaProyecto").submit(procesoForm);
 
 //Monitoreo el submitir del formulario de carga de horas (botón Confirmar)
-$("#form-carga").submit(procesarFormulario);
+//$("#form-carga").submit(procesarFormulario);
+$("#form-carga").on('click', handlerConfirmar);
 
 //Monitoreo el botón Mostrar Resultados en carga de horas
 $("#muestroResultados").on('click', handlerBoton);

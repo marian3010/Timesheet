@@ -54,9 +54,9 @@ function reasignarId() {
         proy.horasTot = 0;
         proyId++;
     }
-    for (let emp of empleados) {
-        emp.horasTot = 0;
 
+    for (let emp of empleados) {
+        emp.horas = 0;
     }
 }
 
@@ -95,7 +95,6 @@ function agregarLinea(proy) {
         var index = proyectos.findIndex(proy => proy.id == ($(e.target).attr('id')).split('-')[1]);
         //proyectosDecodificado.splice(index, 1);
         proyectos = proyectos.filter(proy => proy.id != index);
-        console.log(proyectos);
         reasignarId();
         // borro la fila del html
         const nodoFila = $(e.target).parent().parent();
@@ -172,7 +171,13 @@ function procesarFormulario(e) {
         proyectos[indexProyecto].horasTot = Number(proyectos[indexProyecto].horasTot) + horas;
     }
     console.log("sume horas al proyecto - boton confirmar");
-    $(e).reset();
+    $("#form-carga").reset();
+}
+
+function handlerConfirmar() {
+
+    submit(procesarFormulario);
+    reset();
 }
 
 
