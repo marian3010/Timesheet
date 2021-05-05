@@ -43,12 +43,12 @@ $("#btnJ").click(() => {
         if (estado === "success") {
             empleados = respuesta;
             $("#listaEmpleados").html("");
-            $("#listaEmpleados").append(`<div class="desarrolladores-item"><strong>Desarrolladores</strong>`);
-            $("#listaEmpleados").append(`<div class="desarrolladores-item"><strong>Horas Mensuales</strong>`);
+            $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores-item"><strong>Desarrolladores</strong>`);
+            $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores-item"><strong>Horas Mensuales</strong>`);
 
             for (let des of empleados) {
-                $("#listaEmpleados").append(`<div class="desarrolladores-item">${des.nombre}`);
-                $("#listaEmpleados").append(`<div class="desarrolladores-item">${des.horasMensuales}`);
+                $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores-item">${des.nombre}`);
+                $("#listaEmpleados").append(`<div id="listaEmpleados" class="desarrolladores-item">${des.horasMensuales}`);
             }
         }
     })
