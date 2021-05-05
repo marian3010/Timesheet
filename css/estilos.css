@@ -117,10 +117,17 @@ input {
 }
 
 .desarrolladores {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: rgb(183, 191, 202);
+    padding: 10px;
+}
+
+.desarrolladores-item {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1rem;
     color: rgb(33, 67, 102);
-    margin-left: 1rem;
+    text-align: center;
 }
 
 .proyectos {
@@ -174,7 +181,7 @@ input {
 
 .empleados {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     background-color: #4d4d40;
     padding: 10px;
 }

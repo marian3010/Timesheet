@@ -12,8 +12,9 @@ class Proyecto {
     }
 }
 class Empleado {
-    constructor(nombreEmpleado, hsProyectos) {
+    constructor(nombreEmpleado, hsMensuales, hsProyectos) {
         this.nombre = nombreEmpleado;
+        this.horasMensuales = hsMensuales;
         this.horas = hsProyectos;
     }
 };
@@ -42,9 +43,12 @@ $("#btnJ").click(() => {
         if (estado === "success") {
             empleados = respuesta;
             $("#listaEmpleados").html("");
-            $("#listaEmpleados").append(`<div class="desarrolladores"><strong>Desarrolladores</strong>`);
+            $("#listaEmpleados").append(`<div class="desarrolladores-item"><strong>Desarrolladores</strong>`);
+            $("#listaEmpleados").append(`<div class="desarrolladores-item"><strong>Horas Mensuales</strong>`);
+
             for (let des of empleados) {
-                $("#listaEmpleados").append(`<div class="desarrolladores">${des.nombre}`);
+                $("#listaEmpleados").append(`<div class="desarrolladores-item">${des.nombre}`);
+                $("#listaEmpleados").append(`<div class="desarrolladores-item">${des.horasMensuales}`);
             }
         }
     })

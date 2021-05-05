@@ -55,7 +55,6 @@ function agregarLinea(proy) {
         alert("Si ya procesó una simulación, actualice los resultados presionando el botón Resultados de la siguiente sección.");
     });
     $(`#row${proy.id}`).fadeIn(2000, () => { console.log('Agrego fila') });
-
 }
 
 function procesoForm(e) {
@@ -78,7 +77,6 @@ function procesoForm(e) {
     };
     proyectos.push(nuevoProyecto);
     agregarLinea(nuevoProyecto);
-
 }
 
 //Defino funciones
@@ -110,7 +108,6 @@ function procesarFormulario(e) {
         empleados[indexEmpleado].horas = empleados[indexEmpleado].horas + horas;
         proyectos[indexProyecto].horasTot = Number(proyectos[indexProyecto].horasTot) + horas;
     }
-
 }
 
 //Llamo a las funciones de actualizacion de resultados al hacer click en Mostrar Resultados
@@ -167,12 +164,13 @@ function actualizoValoresEmpleado() {
 
     //Agrego los títulos al div
     $("#empleado").append(`<div id="empleado" class="empleados-item"><strong>Nombre empleado</strong>`);
+    $("#empleado").append(`<div id="empleado" class="empleados-item"><strong>Horas Mensuales</strong>`);
     $("#empleado").append(`<div id="empleado" class="empleados-item"><strong>Horas cargadas</strong>`);
 
     //recorro array empleados y armo la grilla
     for (const empleadoItem of empleados) {
         $("#empleado").append(`<div id="empleado" class="empleados-item">${empleadoItem.nombre}`);
+        $("#empleado").append(`<div id="empleado" class="empleados-item">${empleadoItem.horasMensuales}`);
         $("#empleado").append(`<div id="empleado" class="empleados-item"> ${empleadoItem.horas}`);
-
     }
 }

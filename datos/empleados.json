@@ -1,34 +1,42 @@
 [
       {
          "nombre":"Francisco",
+	 "horasMensuales":160,
          "horas":0
       },
       {
          "nombre":"Juan",
+	 "horasMensuales":80,
          "horas":0
       },      
       {
          "nombre":"Pedro",
+	 "horasMensuales":120,
          "horas":0
       },
       {
 	"nombre":"Ana",
+	"horasMensuales":80,
 	"horas":0
       },
       {
          "nombre":"Julio",
+	 "horasMensuales":80,
          "horas":0
       },
       {
          "nombre":"Mariana",
+	 "horasMensuales":160,
          "horas":0
       },
       {
          "nombre":"Matias",
+	 "horasMensuales":100,
          "horas":0
       },
       {
          "nombre":"Barbara",
+	 "horasMensuales":80,
          "horas":0
       }
 ]
