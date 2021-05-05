@@ -3,14 +3,12 @@ let primeraVezEmp = true;
 let primeraVezProy = true;
 let empleadosDecodificado = [];
 
-empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
-proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
-console.log(empleadosDecodificado);
-console.log(proyectosDecodificado);
 //Defino funciones
 //Proceso los valores ingresados en el formulario al hacer click en Confirmar
 
 function procesarFormulario(e) {
+    empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
+    proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
     console.log("entro al evento submit");
     console.log(proyectosDecodificado);
     e.preventDefault();
@@ -39,6 +37,8 @@ function procesarFormulario(e) {
     if (error == false) {
         empleadosDecodificado[indexEmpleado].horas = empleadosDecodificado[indexEmpleado].horas + horas;
         proyectosDecodificado[indexProyecto].horasTot = Number(proyectosDecodificado[indexProyecto].horasTot) + horas;
+        localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
+        localStorage.setItem('tablaEmpleados', JSON.stringify(empleadosDecodificado));
     }
     console.log("sume horas al proyecto - boton confirmar");
 }
@@ -47,9 +47,11 @@ function procesarFormulario(e) {
 //Llamo a las funciones de actualizacion de resultados al hacer click en Mostrar Resultados
 function handlerBoton() {
     console.log("entro al evento mostrar");
+    empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
+    proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
     actualizoValoresProyecto();
     actualizoValoresEmpleado();
-    console.log("boton mostrar");
+
 }
 
 // Agrego nodos hijos al nodo Proyectos
