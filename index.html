@@ -26,8 +26,8 @@
             <h1>Proyecto Timesheet</h1>
             <p>Para realizar la sumulación de horas deberá seguir los siguientes pasos:</p>
             <ol>
-                <li> cargar la nómina de desarrolladores.</li>
-                <li> cargar los proyectos para los cuales se quiere realizar la simulación.</li>
+                <li> cargar la nómina de desarrolladores que se encuentran pre-cargados en un Json.</li>
+                <li> cargar proyectos adicionales a los ofrecidos para los cuales se quiere realizar la simulación.</li>
                 <li> cargar las horas por desarrollador y proyecto.</li>
                 <li> actualizar y controlar los resultados.</li>
             </ol>
@@ -35,13 +35,12 @@
         <section class="titulos">
             <h2>1. Nómina de desarrolladores</h2>
             <div id="empleados" class="nomina">
-                <p>Presione el botón para cargar los empleados</p>
+                <p>Presione el botón para cargar los empleados desde el archivo guardado.</p>
             </div>
             <div id="listaEmpleados" class="nomina"></div>
         </section>
         <section id="Proyectos" class="titulos">
             <h2>2. Carga de Proyectos</h2>
-            <button class="boton-rojo" id="subir">Ir Arriba</button>
             <div class="formulario">
                 <form id="altaProyecto" class="formCarga">
                     <label for proyecto>Nombre Proyecto:</label>
@@ -63,6 +62,7 @@
         </section>
         <section id="Horas" class="titulos">
             <h2>3. Simulación de horas de proyectos</h2>
+            <button class="boton-rojo" id="subir">Ir Arriba</button>
             <div id="formulario">
                 <div class="formulario">
                     <form id="form-carga" class="formCarga">
@@ -81,6 +81,7 @@
         </section>
         <section id="Resultados" class="titulos">
             <h2>4. Resultados de la simulación</h2>
+            <button class="boton-rojo" id="subir">Ir Arriba</button>
             <div id="resultados">
                 <h3>Resultados por Proyecto</h3>
                 <div id="proyecto" class="proyectos">

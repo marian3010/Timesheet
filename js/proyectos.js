@@ -103,8 +103,3 @@ function procesoForm(e) {
 }
 
 $("#altaProyecto").submit(procesoForm);
-
-$('#subir').click(()  =>  {    
-    $('html, body').animate({ scrollTop:  $("body").offset().top }, 5000);
-    console.log("subi");
-});
