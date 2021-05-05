@@ -54,10 +54,10 @@ function reasignarId() {
         proy.horasTot = 0;
         proyId++;
     }
-    //for (let emp of empleadosDecodificado) {
-    //  emp.horasTot = 0;
+    for (let emp of empleados) {
+        emp.horasTot = 0;
 
-    //}
+    }
 }
 
 //Función que agrega los proyectos al grid
@@ -127,7 +127,6 @@ function procesoForm(e) {
         return;
     }
     let canti = proyectos.length;
-    console.log(canti);
     const nuevoProyecto = {
         id: canti,
         nomProyecto,
@@ -135,7 +134,6 @@ function procesoForm(e) {
         horasTot,
     };
     proyectos.push(nuevoProyecto);
-    //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
     agregarLinea(nuevoProyecto);
 
 }
@@ -144,10 +142,8 @@ function procesoForm(e) {
 //Defino funciones
 //Proceso los valores ingresados en el formulario de carga de horas al hacer click en Confirmar
 function procesarFormulario(e) {
-    //empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
-    //proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
+
     console.log("entro al evento submit");
-    console.log(proyectos);
     e.preventDefault();
     error = false;
     let formulario = e.target;
@@ -174,18 +170,16 @@ function procesarFormulario(e) {
     if (error == false) {
         empleados[indexEmpleado].horas = empleados[indexEmpleado].horas + horas;
         proyectos[indexProyecto].horasTot = Number(proyectos[indexProyecto].horasTot) + horas;
-        //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
-        //localStorage.setItem('tablaEmpleados', JSON.stringify(empleadosDecodificado));
     }
     console.log("sume horas al proyecto - boton confirmar");
+    $("#form-carga").reset();
 }
 
 
 //Llamo a las funciones de actualizacion de resultados al hacer click en Mostrar Resultados
 function handlerBoton() {
     console.log("entro al evento mostrar");
-    // empleadosDecodificado = JSON.parse(localStorage.getItem('tablaEmpleados'));
-    //proyectosDecodificado = JSON.parse(localStorage.getItem('tablaProyectos'));
+
     actualizoValoresProyecto();
     actualizoValoresEmpleado();
 }
@@ -202,7 +196,6 @@ function actualizoValoresProyecto() {
 
     for (let proy of proyectos) {
         agregarProyecto(proy);
-
     }
 }
 
