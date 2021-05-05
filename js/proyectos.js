@@ -69,6 +69,7 @@ function agregarLinea(proy) {
         localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
     });
     console.log("se agregara fila de proyecto");
+    console.log(proy.id);
     $(`#row${proy.id}`).fadeIn(2000, () => { console.log('Agrego fila') });
     //localStorage.setItem('tablaProyectos', JSON.stringify(proyectosDecodificado));
 }
