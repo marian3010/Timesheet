@@ -176,7 +176,7 @@ function procesarFormulario(e) {
 function handlerConfirmar() {
 
     $("#form-carga").submit(procesarFormulario);
-    $("#form-carga").reset();
+    //$("#form-carga").reset();
 }
 
 
