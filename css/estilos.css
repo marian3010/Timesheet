@@ -82,7 +82,7 @@ input {
 .estilo-footer {
     display: grid;
     grid-template-columns: auto auto auto;
-    background-color: rgb(104, 95, 156);
+    background-color: black;
     height: 50px;
     padding: 10px;
 }
