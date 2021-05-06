@@ -186,11 +186,25 @@ input {
     padding: 10px;
 }
 
-.empleados-item {
+.empleados-item-verde {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1rem;
     text-align: center;
-    color: white;
+    color: green;
+}
+
+.empleados-item-rojo {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: rgb(240, 80, 80);
+}
+
+.empleados-item-amarillo {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: yellow;
 }
 
 .formulario {
