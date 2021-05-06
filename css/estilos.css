@@ -186,6 +186,13 @@ input {
     padding: 10px;
 }
 
+.empleados-item {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+}
+
 .empleados-item-verde {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1rem;

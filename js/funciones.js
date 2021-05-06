@@ -171,19 +171,18 @@ function actualizoValoresEmpleado() {
     for (const empleadoItem of empleados) {
 
         let porUsoHoras = empleadoItem.horas / empleadoItem.horasMensuales * 100;
-        switch (porUsoHoras) {
-            case (porUsoHoras > 100):
-                $("#empleado").append(`<div id="empleado" class="empleados-item-amarillo">${empleadoItem.nombre}`);
-                $("#empleado").append(`<div id="empleado" class="empleados-item-amarillo">${empleadoItem.horasMensuales}`);
-                $("#empleado").append(`<div id="empleado" class="empleados-item-amarillo"> ${empleadoItem.horas}`);
-            case (porUsoHoras <= 100 && porUsoHoras > 50):
-                $("#empleado").append(`<div id="empleado" class="empleados-item-verde">${empleadoItem.nombre}`);
-                $("#empleado").append(`<div id="empleado" class="empleados-item-verde">${empleadoItem.horasMensuales}`);
-                $("#empleado").append(`<div id="empleado" class="empleados-item-verde"> ${empleadoItem.horas}`);
-            default:
-                $("#empleado").append(`<div id="empleado" class="empleados-item-rojo">${empleadoItem.nombre}`);
-                $("#empleado").append(`<div id="empleado" class="empleados-item-rojo">${empleadoItem.horasMensuales}`);
-                $("#empleado").append(`<div id="empleado" class="empleados-item-rojo"> ${empleadoItem.horas}`);
+        if (porUsoHoras > 100) {
+            $("#empleado").append(`<div id="empleado" class="empleados-item-amarillo">${empleadoItem.nombre}`);
+            $("#empleado").append(`<div id="empleado" class="empleados-item-amarillo">${empleadoItem.horasMensuales}`);
+            $("#empleado").append(`<div id="empleado" class="empleados-item-amarillo"> ${empleadoItem.horas}`);
+        } else if (porUsoHoras <= 100 && porUsoHoras > 50) {
+            $("#empleado").append(`<div id="empleado" class="empleados-item-verde">${empleadoItem.nombre}`);
+            $("#empleado").append(`<div id="empleado" class="empleados-item-verde">${empleadoItem.horasMensuales}`);
+            $("#empleado").append(`<div id="empleado" class="empleados-item-verde"> ${empleadoItem.horas}`);
+        } else {
+            $("#empleado").append(`<div id="empleado" class="empleados-item-rojo">${empleadoItem.nombre}`);
+            $("#empleado").append(`<div id="empleado" class="empleados-item-rojo">${empleadoItem.horasMensuales}`);
+            $("#empleado").append(`<div id="empleado" class="empleados-item-rojo"> ${empleadoItem.horas}`);
         }
     }
 }
