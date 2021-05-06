@@ -82,8 +82,8 @@ input {
 .estilo-footer {
     display: grid;
     grid-template-columns: auto auto auto;
-    background-color: rgb(174, 173, 180);
-    background-image: linear-gradient(#919daa, #b2bfcc);
+    background-color: rgb(132, 127, 161);
+    background-image: linear-gradient(#626e7c, #a0b3c5);
     height: 50px;
     padding: 10px;
 }
